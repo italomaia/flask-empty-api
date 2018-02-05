@@ -1,2 +1,3 @@
 .vscode
+.bash_history
 *.pyc
