@@ -1,0 +1,34 @@
+version: '3.3'
+
+volumes:
+  db-data:
+    driver: local
+
+networks:
+  backend:
+  frontend:
+
+services:
+  db:
+    command: ["postgres"]
+    entrypoint: ["docker-entrypoint.sh"]
+    image: postgres:10.1
+    env_file:
+    - ./envfile
+    networks:
+    - backend
+    volumes:
+    - db-data:/var/lib/postgresql/data/
+  broker:
+    image: redis
+    networks:
+    - backend
+  app:
+    build: ./app
+    env_file:
+    - ./envfile
+    depends_on:
+    - db
+    - broker
+    networks:
+    - frontent

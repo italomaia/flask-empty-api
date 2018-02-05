@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  db:
+    env_file:
+    - ./envfile-dev
+    stdin_open: true
+    tty: true
+  broker:
+    env_file:
+    - ./envfile-dev
+    stdin_open: true
+    tty: true
+  app:
+    env_file:
+    - ./envfile-dev
+    ports:
+    - 5000:5000
+    stdin_open: true
+    tty: true
+    volumes:
+    - type: bind
+      source: ./app
+      target: /home/nonroot

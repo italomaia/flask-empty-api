@@ -1,0 +1,17 @@
+# change <app> by your app name
+# do not keep this in vcs
+PGDATA=/var/lib/postgresql/data/app
+POSTGRES_DB=app
+POSTGRES_USER=app_user
+POSTGRES_PASSWORD_FILE=/run/secrets/postgres_passwd
+
+FLASK_APP=auto.py
+FLASK_DEBUG=0
+# generate your secret with the command below
+# python -c "import os; print(os.urandom(20))"
+FLASK_SECRET_KEY_FILE=/run/secrets/flask_secret_key
+FLASK_LOGGER_NAME=app_logger
+
+# SERVER_NAME should be the full domain
+# serving your application
+SERVER_NAME=
