@@ -31,4 +31,5 @@ services:
     - db
     - broker
     networks:
-    - frontent
+    - backend
+    - frontend
