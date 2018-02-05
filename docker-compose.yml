@@ -12,7 +12,7 @@ services:
   db:
     command: ["postgres"]
     entrypoint: ["docker-entrypoint.sh"]
-    image: postgres:10.1
+    image: postgres:10.1-alpine
     env_file:
     - ./envfile
     networks:
@@ -20,7 +20,7 @@ services:
     volumes:
     - db-data:/var/lib/postgresql/data/
   broker:
-    image: redis
+    image: redis:4.0-alpine
     networks:
     - backend
   app:
