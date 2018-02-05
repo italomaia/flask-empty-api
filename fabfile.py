@@ -170,3 +170,13 @@ def docker_logs(name):
     Get docker container logs.
     """
     get_fn()('docker logs %s' % name)
+
+
+@task(alias='attach')
+def docker_attach(cid):
+    local('docker attach --sig-proxy=false --detach-keys="ctrl-c" %s' % cid)
+
+
+@task(alias='ps')
+def docker_ps():
+    get_fn()('docker ps --format "{{.Names}}\t{{.ID}}"')
