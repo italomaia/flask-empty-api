@@ -13,12 +13,15 @@ EXTENSIONS = list(map(lambda e: 'extensions.' + e, [
     'security'
 ]))
 
+PSYCOPG2_URI = 'postgresql+psycopg2://{user}:{passwd}@{host}/{name}'
+
+RQ_REDIS_URL = 'redis://broker:6379/0'
+
 # Make sure SERVER_NAME contains the access port for
 # the http server if it is not a default port (ex: dv:8080)
 # Also, add "127.0.0.1 dv" to your /etc/hosts during development
 SERVER_NAME = os.getenv('SERVER_NAME') + os.getenv('SERVER_NAME_EXTRA', '')
 
-PSYCOPG2_URI = 'postgresql+psycopg2://{user}:{passwd}@{host}/{name}'
 SQLALCHEMY_DATABASE_URI = PSYCOPG2_URI.format(
     user=load_env('POSTGRES_USER'),
     passwd=load_env('POSTGRES_PASSWORD'),
